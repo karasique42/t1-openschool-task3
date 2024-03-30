@@ -4,7 +4,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.nikolotov.t1task3.aspect.Logged;
 import ru.nikolotov.t1task3.dto.CreateUserDto;
-import ru.nikolotov.t1task3.dto.UserDto;
 import ru.nikolotov.t1task3.entity.User;
 import ru.nikolotov.t1task3.mapper.UserMapper;
 import ru.nikolotov.t1task3.repository.UserRepository;
