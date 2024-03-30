@@ -29,20 +29,23 @@ public class LoggingAspect {
                     .append(arg.getClass().getSimpleName())
                     .append('\n');
         }
-        log.info("Method {} received args {}", methodSignature.getMethod().getName(), sb);
+        log.info("Method '{}' of class {} received args {}", methodSignature.getMethod().getName(),
+                methodSignature.getMethod().getDeclaringClass(), sb);
     }
 
     @AfterReturning(value = "execution(@ru.nikolotov.t1task3.aspect.Logged * * (..))",
             returning = "returnValue")
     public void logReturnValue(JoinPoint joinPoint, Object returnValue) {
         MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
-        log.info("Method {} returned value {}", methodSignature.getMethod().getName(), returnValue);
+        log.info("Method '{}' of class {} returned value {}", methodSignature.getMethod().getName(),
+                methodSignature.getMethod().getDeclaringClass(), returnValue);
     }
 
     @AfterThrowing(value = "execution(@ru.nikolotov.t1task3.aspect.Logged * * (..))",
             throwing = "ex")
     public void logException(JoinPoint joinPoint, Throwable ex) {
         MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
-        log.info("Method {} thrown exception {}", methodSignature.getMethod().getName(), ex);
+        log.info("Method '{}' of class {} thrown exception {}", methodSignature.getMethod().getName(),
+                methodSignature.getMethod().getDeclaringClass(), ex.toString());
     }
 }

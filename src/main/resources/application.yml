@@ -1,5 +1,8 @@
-
+logging:
+  config: classpath:log4j2.xml
 spring:
+  profiles:
+    active: dev
   liquibase:
     change-log: db/db.changelog-master.xml
   datasource:

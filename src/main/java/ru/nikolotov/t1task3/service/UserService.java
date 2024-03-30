@@ -31,6 +31,7 @@ public class UserService {
         return userRepository.findAll();
     }
 
+    @Logged
     public User create(CreateUserDto dto) {
         return Optional.of(dto)
                 .map(userMapper::dtoToEntity)
@@ -38,6 +39,7 @@ public class UserService {
                 .orElseThrow();
     }
 
+    @Logged
     public User update(UUID id, CreateUserDto dto) {
         return userRepository.findById(id)
                 .map(entity -> userMapper.updateEntity(entity, dto))
@@ -45,6 +47,7 @@ public class UserService {
                 .orElseThrow();
     }
 
+    @Logged
     public void delete(UUID id) {
         userRepository.deleteById(id);
     }
